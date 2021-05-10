@@ -1,0 +1,20 @@
+{
+  "name": "potree-viewer",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "postscribe": "^2.0.8",
+    "vue": "^3.0.5",
+    "wkt-parser": "^1.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.2.3"
+  }
+}

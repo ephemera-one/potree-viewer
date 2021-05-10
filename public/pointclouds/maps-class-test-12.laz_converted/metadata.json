@@ -1,0 +1,95 @@
+{
+	"version": "2.0",
+	"name": "maps-class-test-12",
+	"description": "",
+	"points": 8192,
+	"projection": "",
+	"hierarchy": {
+		"firstChunkSize": 528, 
+		"stepSize": 4, 
+		"depth": 0
+	},
+	"offset": [-6043.28125, -2571.9462890625, -3274.0810546875],
+	"scale": [0.001, 0.001, 0.001],
+	"spacing": 98.213664062500001,
+	"boundingBox": {
+		"min": [-6043.28125, -2571.9462890625, -3274.0810546875], 
+		"max": [6528.0677500000002, 9999.4027109375002, 9297.2679453125002]
+	},
+	"encoding": "DEFAULT",
+	"attributes": [
+		{
+			"name": "position",
+			"description": "",
+			"size": 12,
+			"numElements": 3,
+			"elementSize": 4,
+			"type": "int32",
+			"min": [-6043.28125, -2571.9462890625, -3274.0810546875],
+			"max": [6528.0677500000002, 3392.5537109375, 3476.5519453124998]
+		},{
+			"name": "intensity",
+			"description": "",
+			"size": 2,
+			"numElements": 1,
+			"elementSize": 2,
+			"type": "uint16",
+			"min": [0],
+			"max": [0]
+		},{
+			"name": "return number",
+			"description": "",
+			"size": 1,
+			"numElements": 1,
+			"elementSize": 1,
+			"type": "uint8",
+			"min": [0],
+			"max": [0]
+		},{
+			"name": "number of returns",
+			"description": "",
+			"size": 1,
+			"numElements": 1,
+			"elementSize": 1,
+			"type": "uint8",
+			"min": [0],
+			"max": [0]
+		},{
+			"name": "classification",
+			"description": "",
+			"size": 1,
+			"numElements": 1,
+			"elementSize": 1,
+			"type": "uint8",
+			"min": [0],
+			"max": [31]
+		},{
+			"name": "scan angle rank",
+			"description": "",
+			"size": 1,
+			"numElements": 1,
+			"elementSize": 1,
+			"type": "uint8",
+			"min": [0],
+			"max": [0]
+		},{
+			"name": "user data",
+			"description": "",
+			"size": 1,
+			"numElements": 1,
+			"elementSize": 1,
+			"type": "uint8",
+			"min": [0],
+			"max": [0]
+		},{
+			"name": "point source id",
+			"description": "",
+			"size": 2,
+			"numElements": 1,
+			"elementSize": 2,
+			"type": "uint16",
+			"min": [0],
+			"max": [0]
+		}
+	]
+}
