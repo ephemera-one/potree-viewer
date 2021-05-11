@@ -1,30 +1,26 @@
 <template>
-  <div id="app">
-    <potree />
-    <controls />
-  </div>
+  <v-app>
+    <v-main>
+      <potree />
+      <controls />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import Potree from "./components/Potree.vue";
 import Controls from "./components/Controls.vue";
+import Potree from "./components/Potree.vue";
 
 export default {
   name: "App",
+
   components: {
     Potree,
     Controls,
   },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
