@@ -22,8 +22,10 @@
   </v-row>
 </template>
 <script>
+import { VRow, VCol, VBtnToggle, VBtn } from "vuetify/lib";
 export default {
   props: { title: String, id: Number },
+  components: { VRow, VCol, VBtnToggle, VBtn },
   data() {
     return {
       selectedButtons: [0, 1, 2],

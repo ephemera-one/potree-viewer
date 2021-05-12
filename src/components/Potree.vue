@@ -13,46 +13,40 @@
 
 <script>
 /*global viewer, Potree*/
-const loadCloud = () => {
-  Potree.loadPointCloud(
-    "pointclouds/final_cloud.laz_converted/metadata.json",
-    "n0",
-    (e) => {
-      let scene = viewer.scene;
-      let pointcloud = e.pointcloud;
+const loadCloud = (pointcloud) => {
+  Potree.loadPointCloud(pointcloud, "n0", (e) => {
+    let scene = viewer.scene;
+    let pointcloud = e.pointcloud;
 
-      let material = pointcloud.material;
-      material.size = 2;
-      material.pointSizeType = Potree.PointSizeType.FIXED;
-      material.shape = Potree.PointShape.CIRCLE;
-      material.activeAttributeName = "classification";
-      material.opacity = 0.17;
+    let material = pointcloud.material;
+    material.size = 2;
+    material.pointSizeType = Potree.PointSizeType.FIXED;
+    material.shape = Potree.PointShape.CIRCLE;
+    material.activeAttributeName = "classification";
+    material.opacity = 0.17;
 
-      let classification = {
-        DEFAULT: { visible: true, name: "default", color: [1, 1, 1, 1] },
+    let classification = {
+      DEFAULT: { visible: true, name: "default", color: [1, 1, 1, 1] },
+    };
+
+    for (let i = 0; i < 27; i++) {
+      classification[i] = {
+        visible: true,
+        name: "default",
+        color: [1, 1, 1, 1],
       };
-
-      for (let i = 0; i < 27; i++) {
-        classification[i] = {
-          visible: true,
-          name: "default",
-          color: [1, 1, 1, 1],
-        };
-      }
-
-      viewer.setClassifications(classification);
-
-      console.log(classification);
-
-      scene.addPointCloud(pointcloud);
-
-      viewer.fitToScreen();
-
-      document.querySelector("canvas").style.removeProperty("position");
     }
-  );
+
+    viewer.setClassifications(classification);
+
+    console.log(classification);
+
+    scene.addPointCloud(pointcloud);
+
+    viewer.fitToScreen();
+  });
 };
-const addPotreeLib = (renderArea) => {
+const addPotreeLib = (renderArea, pointcloud) => {
   let pScript = document.createElement("script");
   pScript.setAttribute("src", "potree/potree.full.js");
   document.head.appendChild(pScript);
@@ -68,13 +62,16 @@ const addPotreeLib = (renderArea) => {
 
     console.log("Initialized Potree");
 
-    loadCloud();
+    loadCloud(pointcloud);
   };
 };
 
 export default {
+  props: {
+    pointcloud: String,
+  },
   mounted() {
-    addPotreeLib(this.$refs.renderArea);
+    addPotreeLib(this.$refs.renderArea, this.pointcloud);
   },
 };
 </script>
