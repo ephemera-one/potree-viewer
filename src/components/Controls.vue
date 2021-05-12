@@ -1,36 +1,60 @@
 <template>
-  <v-card id="controls" flat class="py-12">
-    <v-card-text>
-      <v-row align="center" justify="center">
-        <v-col cols="12">
-          <p class="text-center">
-            Multiple
-          </p>
-        </v-col>
-        <v-btn-toggle v-model="toggle_exclusive" mandatory multiple>
-          <v-btn>
-            Low
-          </v-btn>
-          <v-btn>
-            Mid
-          </v-btn>
-          <v-btn>
-            High
-          </v-btn>
-        </v-btn-toggle>
-
-        <v-col cols="12" class="text-center">
-          Model: {{ toggle_exclusive }}
-        </v-col>
-      </v-row>
-    </v-card-text>
+  <v-card id="controls" flat class="py-5" max-width="200">
+    <control-buttons :id="0" @filterChanged="filterData" :title="titles[0]" />
+    <control-buttons :id="1" @filterChanged="filterData" :title="titles[1]" />
+    <control-buttons :id="2" @filterChanged="filterData" :title="titles[2]" />
   </v-card>
 </template>
 <script>
+import ControlButtons from "./ControlButtons.vue";
+
+function combos(list, n = 0, result = [], current = []) {
+  if (n === list.length) result.push(current);
+  else
+    list[n].forEach((item) => combos(list, n + 1, result, [...current, item]));
+
+  return result;
+}
+
+function calculateIndex(selectedOptions) {
+  let indexValue = 0;
+
+  for (let i = 0; i < 3; i++) {
+    let value = selectedOptions[i];
+
+    indexValue += value * Math.pow(3, 2 - i);
+  }
+
+  return indexValue;
+}
+
 export default {
+  components: { ControlButtons },
+  props: {
+    titles: Array,
+  },
+  methods: {
+    filterData: function(data) {
+      this.filters[data.id] = data.data.sort();
+
+      let filtersArray = [];
+      for (let i = 0; i < 3; i++) {
+        filtersArray.push(this.filters[i]);
+      }
+
+      const combinations = combos(filtersArray);
+      combinations.forEach((c) => {
+        console.log(`${calculateIndex(c)}-${c}`);
+      });
+    },
+  },
   data() {
     return {
-      toggle_exclusive: [0, 1, 2],
+      filters: {
+        0: [0, 1, 2],
+        1: [0, 1, 2],
+        2: [0, 1, 2],
+      },
     };
   },
 };

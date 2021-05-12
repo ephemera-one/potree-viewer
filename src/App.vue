@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <potree />
-      <controls />
+      <controls :titles="titles" />
     </v-main>
   </v-app>
 </template>
@@ -19,8 +19,10 @@ export default {
     Controls,
   },
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      titles: ["Layer 1", "Layer 2", "Layer 3"],
+    };
+  },
 };
 </script>
