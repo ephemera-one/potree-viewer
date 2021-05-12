@@ -15,7 +15,7 @@
 /*global viewer, Potree*/
 const loadCloud = () => {
   Potree.loadPointCloud(
-    "pointclouds/point_cloud.laz_converted/metadata.json",
+    "pointclouds/final_cloud.laz_converted/metadata.json",
     "n0",
     (e) => {
       let scene = viewer.scene;
