@@ -28,6 +28,16 @@ function calculateIndex(selectedOptions) {
   return indexValue;
 }
 
+function disableAll() {
+  for (let i = 0; i < 27; i++) {
+    window.viewer.setClassificationVisibility(i, false);
+  }
+}
+
+function enableClass(index) {
+  window.viewer.setClassificationVisibility(index, true);
+}
+
 export default {
   components: { ControlButtons },
   props: {
@@ -43,8 +53,13 @@ export default {
       }
 
       const combinations = combos(filtersArray);
+
+      disableAll();
+
       combinations.forEach((c) => {
-        console.log(`${calculateIndex(c)}-${c}`);
+        let index = calculateIndex(c);
+
+        enableClass(index);
       });
     },
   },

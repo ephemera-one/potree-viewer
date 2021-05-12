@@ -14,31 +14,43 @@
 <script>
 /*global viewer, Potree*/
 const loadCloud = () => {
-  Potree.loadPointCloud("pointclouds/vol_total/cloud.js", "n0", (e) => {
-    let scene = viewer.scene;
-    let pointcloud = e.pointcloud;
+  Potree.loadPointCloud(
+    "pointclouds/point_cloud.laz_converted/metadata.json",
+    "n0",
+    (e) => {
+      let scene = viewer.scene;
+      let pointcloud = e.pointcloud;
 
-    let material = pointcloud.material;
-    material.size = 2;
-    material.pointSizeType = Potree.PointSizeType.FIXED;
-    material.shape = Potree.PointShape.CIRCLE;
-    // material.activeAttributeName = "classification";
-    material.opacity = 0.17;
+      let material = pointcloud.material;
+      material.size = 2;
+      material.pointSizeType = Potree.PointSizeType.FIXED;
+      material.shape = Potree.PointShape.CIRCLE;
+      material.activeAttributeName = "classification";
+      material.opacity = 0.17;
 
-    // let classification = {
-    //   DEFAULT: { visible: true, name: "default", color: [1, 1, 1, 1] },
-    // };
+      let classification = {
+        DEFAULT: { visible: true, name: "default", color: [1, 1, 1, 1] },
+      };
 
-    // viewer.setClassifications(classification);
+      for (let i = 0; i < 27; i++) {
+        classification[i] = {
+          visible: true,
+          name: "default",
+          color: [1, 1, 1, 1],
+        };
+      }
 
-    console.log(material.classification);
+      viewer.setClassifications(classification);
 
-    scene.addPointCloud(pointcloud);
+      console.log(classification);
 
-    viewer.fitToScreen();
+      scene.addPointCloud(pointcloud);
 
-    document.querySelector("canvas").style.removeProperty("position");
-  });
+      viewer.fitToScreen();
+
+      document.querySelector("canvas").style.removeProperty("position");
+    }
+  );
 };
 const addPotreeLib = (renderArea) => {
   let pScript = document.createElement("script");
