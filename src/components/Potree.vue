@@ -1,6 +1,10 @@
 <template>
   <div>
-    <link rel="stylesheet" type="text/css" href="potree/potree.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/js/potree/potree.css"
+    />
 
     <div
       class="potree_container"
@@ -48,7 +52,7 @@ const loadCloud = (pointcloud) => {
 };
 const addPotreeLib = (renderArea, pointcloud) => {
   let pScript = document.createElement("script");
-  pScript.setAttribute("src", "potree/potree.full.js");
+  pScript.setAttribute("src", `/assets/js/potree/potree.full.js`);
   document.head.appendChild(pScript);
 
   pScript.onload = () => {
