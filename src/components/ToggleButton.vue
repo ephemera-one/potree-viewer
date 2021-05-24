@@ -1,5 +1,9 @@
 <template>
-  <button class="font-thin" :class="[active ? 'text-white' : 'text-gray-400']">
+  <button
+    class="font-thin"
+    :class="[active ? 'text-white' : 'text-gray-400']"
+    @click="$emit('click')"
+  >
     {{ title }}
   </button>
 </template>

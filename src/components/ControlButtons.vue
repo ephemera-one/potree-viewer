@@ -1,35 +1,19 @@
 <template>
-  <div>
+  <div class="space-y-1">
     <div class="uppercase text-xs underline">
       {{ title }}
     </div>
     <div class="space-x-5 text-xs">
-      <button
-        class="font-thin"
-        :class="[buttons[0] ? 'text-white' : 'text-gray-400']"
-        @click="setButton(0)"
-      >
-        LOW
-      </button>
-      <button
-        class="font-thin"
-        :class="[buttons[1] ? 'text-white' : 'text-gray-400']"
-        @click="setButton(1)"
-      >
-        MID
-      </button>
-      <button
-        class="font-thin"
-        :class="[buttons[2] ? 'text-white' : 'text-gray-400']"
-        @click="setButton(2)"
-      >
-        HIGH
-      </button>
+      <toggle-button :active="buttons[0]" title="LOW" @click="setButton(0)" />
+      <toggle-button :active="buttons[1]" title="MID" @click="setButton(1)" />
+      <toggle-button :active="buttons[2]" title="HIGH" @click="setButton(2)" />
     </div>
   </div>
 </template>
 <script>
+import ToggleButton from "./ToggleButton.vue";
 export default {
+  components: { ToggleButton },
   props: { title: String, id: Number },
   data() {
     return {
