@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import "@/assets/css/tailwind.css";
+
 import PotreeViewer from "./components/PotreeViewer.vue";
 
 export default {

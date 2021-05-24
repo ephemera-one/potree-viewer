@@ -1,13 +1,12 @@
 <template>
-  <v-card id="controls" flat class="py-5">
+  <div id="controls" class="text-white space-y-5 p-5">
     <control-buttons :id="0" @filterChanged="filterData" :title="titles[0]" />
     <control-buttons :id="1" @filterChanged="filterData" :title="titles[1]" />
     <control-buttons :id="2" @filterChanged="filterData" :title="titles[2]" />
-  </v-card>
+  </div>
 </template>
 <script>
 import ControlButtons from "./ControlButtons.vue";
-import { VCard } from "vuetify/lib";
 
 function combos(list, n = 0, result = [], current = []) {
   if (n === list.length) result.push(current);
@@ -40,7 +39,7 @@ function enableClass(index) {
 }
 
 export default {
-  components: { ControlButtons, VCard },
+  components: { ControlButtons },
   props: {
     titles: Array,
   },

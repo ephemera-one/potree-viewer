@@ -1,37 +1,32 @@
 <template>
-  <v-row align="center" justify="center">
-    <v-col cols="12" class="text-center">
+  <div>
+    <div class="uppercase text-xs">
       {{ title }}
-    </v-col>
-    <v-btn-toggle
-      v-model="selectedButtons"
-      @change="passData"
-      mandatory
-      multiple
-    >
-      <v-btn small>
-        Low
-      </v-btn>
-      <v-btn small>
-        Mid
-      </v-btn>
-      <v-btn small>
-        High
-      </v-btn>
-    </v-btn-toggle>
-  </v-row>
+    </div>
+    <div class="space-x-5 text-xs">
+      <button @click="setButton(0)">LOW</button>
+      <button @click="setButton(1)">MID</button>
+      <button @click="setButton(2)">HIGH</button>
+    </div>
+  </div>
 </template>
 <script>
-import { VRow, VCol, VBtnToggle, VBtn } from "vuetify/lib";
 export default {
   props: { title: String, id: Number },
-  components: { VRow, VCol, VBtnToggle, VBtn },
   data() {
     return {
-      selectedButtons: [0, 1, 2],
+      buttons: [true, true, true],
     };
   },
   methods: {
+    setButton: function(index) {
+      const buttons = this.$data.buttons;
+      const trueCount = buttons.filter(Boolean).length;
+
+      if (trueCount < 2) return;
+
+      buttons[index] = buttons[index] ? false : true;
+    },
     passData: function(data) {
       this.$emit("filterChanged", { id: this.id, data });
     },
