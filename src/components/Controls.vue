@@ -1,5 +1,5 @@
 <template>
-  <div id="controls" class="text-white space-y-5 p-5">
+  <div id="controls" class="text-white space-y-2 p-5">
     <control-buttons :id="0" @filterChanged="filterData" :title="titles[0]" />
     <control-buttons :id="1" @filterChanged="filterData" :title="titles[1]" />
     <control-buttons :id="2" @filterChanged="filterData" :title="titles[2]" />
