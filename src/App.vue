@@ -2,6 +2,7 @@
   <potree-viewer
     titles="Layer 1, Layer 2, Layer 3"
     pointcloud="pointclouds/final_cloud.laz_converted/metadata.json"
+    style="width: 500px; height: 500px"
   />
 </template>
 
