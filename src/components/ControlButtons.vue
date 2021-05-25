@@ -3,7 +3,7 @@
     <div class="uppercase text-xs underline">
       {{ title }}
     </div>
-    <div class="space-x-5 text-xs">
+    <div class="space-x-5">
       <toggle-button :active="buttons[0]" title="LOW" @click="setButton(0)" />
       <toggle-button :active="buttons[1]" title="MID" @click="setButton(1)" />
       <toggle-button :active="buttons[2]" title="HIGH" @click="setButton(2)" />

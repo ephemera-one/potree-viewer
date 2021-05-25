@@ -1,6 +1,6 @@
 <template>
   <button
-    class="font-thin"
+    class="font-thin text-xs"
     :class="[active ? 'text-white' : 'text-gray-400']"
     @click="$emit('click')"
   >
