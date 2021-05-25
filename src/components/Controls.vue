@@ -3,10 +3,24 @@
     <control-buttons :id="0" @filterChanged="filterData" :title="titles[0]" />
     <control-buttons :id="1" @filterChanged="filterData" :title="titles[1]" />
     <control-buttons :id="2" @filterChanged="filterData" :title="titles[2]" />
+
+    <div class="space-x-5">
+      <toggle-button
+        :active="images[0]"
+        :title="imageTitles[0]"
+        @click="enableImage(0)"
+      />
+      <toggle-button
+        :active="images[1]"
+        :title="imageTitles[1]"
+        @click="enableImage(1)"
+      />
+    </div>
   </div>
 </template>
 <script>
 import ControlButtons from "./ControlButtons.vue";
+import ToggleButton from "./ToggleButton.vue";
 
 function combos(list, n = 0, result = [], current = []) {
   if (n === list.length) result.push(current);
@@ -39,9 +53,10 @@ function enableClass(index) {
 }
 
 export default {
-  components: { ControlButtons },
+  components: { ControlButtons, ToggleButton },
   props: {
     titles: Array,
+    imageTitles: Array,
   },
   methods: {
     filterData: function(data) {
@@ -62,6 +77,11 @@ export default {
         enableClass(index);
       });
     },
+    enableImage: function(id) {
+      this.$set(this.images, id, this.images[id] ? false : true);
+
+      this.$emit("imageChanged", { id, enabled: this.images[id] });
+    },
   },
   data() {
     return {
@@ -70,6 +90,7 @@ export default {
         1: [0, 1, 2],
         2: [0, 1, 2],
       },
+      images: [true, true],
     };
   },
 };
@@ -77,7 +98,7 @@ export default {
 <style scoped>
 #controls {
   position: absolute;
-  z-index: 15;
+  z-index: 2;
   top: 0;
   left: 0;
 }
