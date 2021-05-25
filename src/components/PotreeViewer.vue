@@ -25,15 +25,15 @@ export default {
     pointcloud: String,
     image1: String,
     image2: String,
-    image1Title: String,
-    image2Title: String,
+    image1title: String,
+    image2title: String,
   },
   computed: {
     titlesArray() {
       return this.titles.split(",");
     },
     imageTitles() {
-      return [this.image1Title, this.image2Title];
+      return [this.image1title, this.image2title];
     },
   },
   methods: {
