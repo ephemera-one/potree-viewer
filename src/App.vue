@@ -1,16 +1,11 @@
 <template>
-  <Potree />
+  <potree />
+  <controls />
 </template>
 
-<script>
+<script setup>
 import Potree from "./components/Potree.vue";
-
-export default {
-  name: "App",
-  components: {
-    Potree,
-  },
-};
+import Controls from "./components/Controls.vue";
 </script>
 
 <style>
